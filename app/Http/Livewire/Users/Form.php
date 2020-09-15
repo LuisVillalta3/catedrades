@@ -21,8 +21,6 @@ class Form extends Component
     } else {
       $this->rol = $this->user->roles->pluck('name')->first();
     }
-
-    // dd($this->user->roles->pluck('name'));
   }
 
   protected $rules = [

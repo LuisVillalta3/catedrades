@@ -20,6 +20,11 @@
                         Usuarios
                       </x-jet-nav-link>
                     @endcan
+                    @can('index_cellar')
+                      <x-jet-nav-link href="/bodegas" :active="request()->routeIs('bodegas')">
+                        Bodegas
+                      </x-jet-nav-link>
+                    @endcan
                 </div>
             </div>
 

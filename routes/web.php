@@ -35,3 +35,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/usuarios/nuevo', function
 Route::middleware(['auth:sanctum', 'verified'])->get('/usuarios/editar/{id}', function ($id) {
   return view('app.users.form', compact('id'));
 })->name('usuarios.editar');
+
+/** Bodegas ROUTES **/
+Route::middleware(['auth:sanctum', 'verified'])->get('/bodegas', function () {
+  return view('app.cellars.index');
+})->name('bodegas');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/bodegas/nuevo', function ($id = null) {
+  return view('app.cellars.form', compact('id'));
+})->name('bodegas.new');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/bodegas/editar/{id}', function ($id) {
+  return view('app.cellars.form', compact('id'));
+})->name('bodegas.editar');
