@@ -14,11 +14,11 @@ class DatabaseSeeder extends Seeder
   public function run()
   {
     // User::factory(10)->create();
-    PermissionsSeeder::class;
-    AdminSeeder::class;
-    ProductSeeder::class;
-    ProviderSeeder::class;
-    CellarSeeder::class;
-    RRHHSeeder::class;
+    // PermissionsSeeder::class;
+    // AdminSeeder::class;
+    // ProductSeeder::class;
+    // ProviderSeeder::class;
+    // CellarSeeder::class;
+    // RRHHSeeder::class;
   }
 }
