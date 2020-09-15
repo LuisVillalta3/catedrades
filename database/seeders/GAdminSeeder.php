@@ -26,6 +26,8 @@ class GAdminSeeder extends Seeder
       'user_id' => null
     ]);
 
+    $user->assignRole('Administrador');
+
     $user->versions()->save($version);
   }
 }

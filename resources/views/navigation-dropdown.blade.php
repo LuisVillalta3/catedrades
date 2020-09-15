@@ -15,6 +15,11 @@
                     <x-jet-nav-link href="/dashboard" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    @can('index_user')
+                      <x-jet-nav-link href="/usuarios" :active="request()->routeIs('usuarios')">
+                        Usuarios
+                      </x-jet-nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -36,12 +41,6 @@
                         <x-jet-dropdown-link href="/user/profile">
                             {{ __('Profile') }}
                         </x-jet-dropdown-link>
-
-                        @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                            <x-jet-dropdown-link href="/user/api-tokens">
-                                {{ __('API Tokens') }}
-                            </x-jet-dropdown-link>
-                        @endif
 
                         <div class="border-t border-gray-100"></div>
 
