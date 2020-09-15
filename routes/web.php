@@ -48,3 +48,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/bodegas/nuevo', function 
 Route::middleware(['auth:sanctum', 'verified'])->get('/bodegas/editar/{id}', function ($id) {
   return view('app.cellars.form', compact('id'));
 })->name('bodegas.editar');
+
+/** proveedores ROUTES **/
+Route::middleware(['auth:sanctum', 'verified'])->get('/proveedores', function () {
+  return view('app.providers.index');
+})->name('proveedores');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/proveedores/nuevo', function ($id = null) {
+  return view('app.providers.form', compact('id'));
+})->name('proveedores.new');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/proveedores/editar/{id}', function ($id) {
+  return view('app.providers.form', compact('id'));
+})->name('proveedores.editar');

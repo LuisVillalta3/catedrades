@@ -25,6 +25,11 @@
                         Bodegas
                       </x-jet-nav-link>
                     @endcan
+                    @can('index_provider')
+                      <x-jet-nav-link href="/proveedores" :active="request()->routeIs('proveedores')">
+                        Proveedores
+                      </x-jet-nav-link>
+                    @endcan
                 </div>
             </div>
 
