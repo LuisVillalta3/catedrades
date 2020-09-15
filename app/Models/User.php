@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\Versionable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -14,6 +16,8 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
   use HasApiTokens;
+  use SoftDeletes;
+  use Versionable;
   use HasRoles;
   use HasFactory;
   use HasProfilePhoto;
