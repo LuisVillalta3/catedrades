@@ -30,6 +30,11 @@
                         Proveedores
                       </x-jet-nav-link>
                     @endcan
+                    @can('index_product')
+                      <x-jet-nav-link href="/productos" :active="request()->routeIs('productos')">
+                        Productos
+                      </x-jet-nav-link>
+                    @endcan
                 </div>
             </div>
 

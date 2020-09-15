@@ -61,3 +61,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/proveedores/nuevo', funct
 Route::middleware(['auth:sanctum', 'verified'])->get('/proveedores/editar/{id}', function ($id) {
   return view('app.providers.form', compact('id'));
 })->name('proveedores.editar');
+
+/** */
+Route::middleware(['auth:sanctum', 'verified'])->get('/productos', function () {
+  return view('app.products.index');
+})->name('productos');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/productos/nuevo', function ($id = null) {
+  return view('app.products.form', compact('id'));
+})->name('productos.new');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/productos/editar/{id}', function ($id) {
+  return view('app.products.form', compact('id'));
+})->name('productos.editar');
