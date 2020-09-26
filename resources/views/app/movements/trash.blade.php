@@ -1,0 +1,1 @@
+@livewire('movements.trash')

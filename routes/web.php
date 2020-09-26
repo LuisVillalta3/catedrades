@@ -92,3 +92,18 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/editar/{id}',
   return view('app.movements.form', compact('id'));
 })->name('movimientos.editar');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/bodegas/eliminados', function () {
+  return view('app.cellars.trash');
+})->name('bodegas.trash');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/proveedores/eliminados', function () {
+  return view('app.providers.trash');
+})->name('proveedores.trash');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/productos/eliminados', function () {
+  return view('app.products.trash');
+})->name('productos.trash');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/eliminados', function () {
+  return view('app.movements.trash');
+})->name('movimientos.trash');

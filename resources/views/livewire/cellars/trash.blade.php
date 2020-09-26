@@ -6,19 +6,23 @@
           Bodegas
         </h2>
         <div>
-          @can('index_trash')
-            <a href="{{ route('bodegas.trash') }}"
+          @can('clear_trash')
+            <button wire:click='destroyAll'
               class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: red; border-color: red;">
-                Ver papelera
-            </a>
+                Limpiar todo
+            </button>
           @endcan
-          @can('new_cellar')
-            <a
-              class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: green; border-color: green;"
-              href="{{ route('bodegas.new') }}">
-              Nuevo
-            </a>
+          @can('recovery_trash')
+            <button wire:click='recoveryAll'
+              class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: green; border-color: green;">
+              Recuper todos
+            </button>
           @endcan
+          <a
+            class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: blue; border-color: blue;"
+            href="{{ route('bodegas') }}">
+            Ver bodegas
+          </a>
         </div>
       </div>
     </x-slot>
@@ -47,14 +51,13 @@
                       <td class="border px-4 py-2">{{ $item->name }}</td>
                       <td class="border px-4 py-2">{{ $item->ubication }}</td>
                       <td class="border px-4 py-2 inline-flex justify-between">
-                        @can('edit_cellar')
-                          <a
-                            href="{{ route('bodegas.editar', $item->id) }}"
-                            class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: blue; border-color: blue;">
-                            Editar
-                          </a>
+                        @can('recovery_trash')
+                          <button wire:click='recovery({{ $item->id }})'
+                            class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: green; border-color: green;">
+                            Recuperar
+                          </button>
                         @endcan
-                        @can('destroy_cellar')
+                        @can('destroy_trash')
                           <button wire:click="destroy({{ $item->id }})" class="bg-transparent hover:bg-blue-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: red; border-color: red;">
                             Eliminar
                           </button>
