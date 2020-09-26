@@ -15,6 +15,10 @@ use App\Exports\Providers\TrashedExport as ProvidersTrashedExport;
 use App\Exports\Users\TodosExport;
 use App\Exports\Users\TrashedExport;
 use App\Exports\Users\UsersExport;
+use App\Models\Product;
+use App\Models\Provider;
+use App\Models\Cellar;
+use App\Models\Movement;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -37,7 +41,12 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+  return view('dashboard', [
+    'count_products'  => count(Product::all()),
+    'count_provider'  => count(Provider::all()),
+    'count_bodegas'  => count(Cellar::all()),
+    'count_movements'  => count(Movement::all())
+  ]);
 })->name('dashboard');
 
 /** USERS ROUTES **/
