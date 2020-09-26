@@ -19,6 +19,18 @@ class Index extends Component
 
   public function destroy($id)
   {
+    try {
+      $movement = Movement::find($id);
+      $product = $movement->product;
+      if ($movement->type == 1) {
+        $product->stock -= $movement->qty;
+      } else {
+        $product->stock += $movement->qty;
+      }
+      $product->save();
+    } catch (\Throwable $th) {
+      //throw $th;
+    }
     Movement::where('id', $id)->delete();
   }
 }

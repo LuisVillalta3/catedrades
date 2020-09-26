@@ -57,3 +57,13 @@ select {
   text-indent: .5em;
   width: 100%;
 }
+
+.errors-group {
+  background: #f00;
+  color: white;
+  padding: .5em 1em;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+}

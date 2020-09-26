@@ -42,8 +42,8 @@
                     <tr>
                       <td class="border px-4 py-2">{{ $item->created_at }}</td>
                       <td class="border px-4 py-2">{{ $item->product->name }}</td>
-                      <td class="border px-4 py-2">${{ $item->qty }}</td>
-                      <td class="border px-4 py-2">{{ $item->cost }}</td>
+                      <td class="border px-4 py-2">{{ $item->qty }}</td>
+                      <td class="border px-4 py-2">${{ $item->cost }}</td>
                       <td class="border px-4 py-2">{{ $item->provider->name }}</td>
                       <td class="border px-4 py-2">{{ $item->cellar->name }}</td>
                       <td class="border px-4 py-2 inline-flex justify-between">

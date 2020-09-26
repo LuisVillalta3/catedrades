@@ -14,6 +14,7 @@ class Form extends Component
   public $providers;
   public $cellars;
   public $products;
+  public $minavailble;
 
   public function mount($id = null)
   {
@@ -28,16 +29,31 @@ class Form extends Component
     'movement.provider_id'  =>  'required',
     'movement.cellar_id'    =>  'required',
     'movement.product_id'   =>  'required',
-    'movement.cost'         =>  'required',
-    'movement.qty'          =>  'required|numeric'
+    'movement.cost'         =>  'required|numeric|min:1',
+    'movement.qty'          =>  'required|numeric|min:1'
   ];
 
   public function save()
   {
     $this->validate();
-    $this->movement->save();
+    $product = Product::find($this->movement->product_id);
+    if ($this->movement->type == 1) {
+      $this->movement->save();
+      $product->stock += $this->movement->qty;
+      $product->save();
 
-    return redirect()->route('movimientos');
+      return redirect()->route('movimientos');
+    }
+
+    if ($this->movement->type == 0 && ($product->stock >= $this->movement->qty)) {
+      $this->movement->save();
+      $product->stock -= $this->movement->qty;
+      $product->save();
+
+      return redirect()->route('movimientos');
+    }
+    $this->movement->qty = 0;
+    $this->validate();
   }
 
   public function destroy()
@@ -48,6 +64,7 @@ class Form extends Component
 
   public function render()
   {
+    $this->minavailble = false;
     return view('livewire.movements.form');
   }
 }
