@@ -10,14 +10,16 @@ class CellarsExport implements FromCollection, WithHeadings
 {
   public function collection()
   {
-    return Cellar::select('name', 'ubication')->get();
+    return Cellar::select('name', 'ubication', 'created_at')->get();
   }
 
   public function headings(): array
   {
     return [
       'Nombre',
-      'Ubicación'
+      'Ubicación',
+      'Fecha de creación',
+      'Fecha de eliminación',
     ];
   }
 }

@@ -10,14 +10,16 @@ class TodosExport implements FromCollection, WithHeadings
 {
   public function collection()
   {
-    return Cellar::withTrashed()->select('name', 'ubication')->get();
+    return Cellar::withTrashed()->select('name', 'ubication', 'created_at', 'deleted_at')->get();
   }
 
   public function headings(): array
   {
     return [
       'Nombre',
-      'Ubicación'
+      'Ubicación',
+      'Fecha de creación',
+      'Fecha de eliminación',
     ];
   }
 }
