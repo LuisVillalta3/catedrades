@@ -27,14 +27,18 @@
                     <th class="px-4 py-2">Costo</th>
                     <th class="px-4 py-2">Proveedor</th>
                     <th class="px-4 py-2">Bodega</th>
-                    <th>Acciones</th>
+                    @can('destroy_move')
+                      <th>Acciones</th>
+                    @endcan
                   </tr>
                   <tr>
                     <th class="px-4 py-2">&nbsp;</th>
                     <th class="px-4 py-2">&nbsp;</th>
                     <th class="px-4 py-2">&nbsp;</th>
                     <th class="px-4 py-2">&nbsp;</th>
-                    <th class="px-4 py-2">&nbsp;</th>
+                    @can('destroy_move')
+                      <th class="px-4 py-2">&nbsp;</th>
+                    @endcan
                   </tr>
                 </thead>
                 <tbody>
@@ -46,13 +50,13 @@
                       <td class="border px-4 py-2">${{ $item->cost }}</td>
                       <td class="border px-4 py-2">{{ $item->provider->name }}</td>
                       <td class="border px-4 py-2">{{ $item->cellar->name }}</td>
-                      <td class="border px-4 py-2 inline-flex justify-between">
-                        @can('destroy_move')
+                      @can('destroy_move')
+                        <td class="border px-4 py-2 inline-flex justify-between">
                           <button wire:click="destroy({{ $item->id }})" class="bg-transparent hover:bg-blue-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: red; border-color: red;">
                             Eliminar
                           </button>
-                        @endcan
-                      </td>
+                        </td>
+                      @endcan
                     </tr>
                   @endforeach
                 </tbody>
