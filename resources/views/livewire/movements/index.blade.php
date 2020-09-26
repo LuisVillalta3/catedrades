@@ -6,6 +6,26 @@
           Movimientos
         </h2>
         <div>
+          <x-jet-dropdown>
+            <x-slot name="trigger">
+              <button
+                  class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: blue; border-color: blue;">
+                    Descargar reporte
+              </button>
+            </x-slot>
+
+            <x-slot name="content">
+              <x-jet-dropdown-link href="{{ route('movimientos.exportar') }}">
+                movimientos
+              </x-jet-dropdown-link>
+              <x-jet-dropdown-link href="{{ route('movimientos.exportar.todos') }}">
+                movimientos /c papelera
+              </x-jet-dropdown-link>
+              <x-jet-dropdown-link href="{{ route('movimientos.exportar.trash') }}">
+                movimientos eliminados
+              </x-jet-dropdown-link>
+            </x-slot>
+          </x-jet-dropdown>
           @can('index_trash')
             <a href="{{ route('movimientos.trash') }}"
               class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: red; border-color: red;">
