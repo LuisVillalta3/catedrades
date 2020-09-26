@@ -19,6 +19,7 @@ use App\Models\Product;
 use App\Models\Provider;
 use App\Models\Cellar;
 use App\Models\Movement;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;

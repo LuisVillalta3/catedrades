@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="mt-4">
-                  <x-jet-label value="Producto" />
+                  <x-jet-label value="Bodega" />
                   <select wire:model="movement.cellar_id">
                     <option value>-- Seleccione --</option>
                     @foreach ($cellars as $item)
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="mt-4">
-                  <x-jet-label value="Producto" />
+                  <x-jet-label value="Proveedor" />
                   <select wire:model="movement.provider_id">
                     <option value>-- Seleccione --</option>
                     @foreach ($providers as $item)
