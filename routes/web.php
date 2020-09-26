@@ -1,7 +1,15 @@
 <?php
 
+use App\Exports\Cellars\CellarsExport;
+use App\Exports\Cellars\TodosExport as CellarsTodosExport;
+use App\Exports\Cellars\TrashedExport as CellarsTrashedExport;
+use App\Exports\Users\TodosExport;
+use App\Exports\Users\TrashedExport;
+use App\Exports\Users\UsersExport;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,3 +115,29 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/productos/eliminados', fu
 Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/eliminados', function () {
   return view('app.movements.trash');
 })->name('movimientos.trash');
+
+/** Exports */
+Route::middleware(['auth:sanctum', 'verified'])->get('/usuarios/exportar', function () {
+  return Excel::download(new UsersExport, Carbon::now() . ' - users.xlsx');
+})->name('usuarios.exportar');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/usuarios/exportar/trash', function () {
+  return Excel::download(new TrashedExport, Carbon::now() . ' - users-eliminados.xlsx');
+})->name('usuarios.exportar.trash');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/usuarios/exportar/todos', function () {
+  return Excel::download(new TodosExport, Carbon::now() . ' - users-todos.xlsx');
+})->name('usuarios.exportar.todos');
+
+/** */
+Route::middleware(['auth:sanctum', 'verified'])->get('/bodegas/exportar', function () {
+  return Excel::download(new CellarsExport, Carbon::now() . ' - Cellars.xlsx');
+})->name('bodegas.exportar');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/bodegas/exportar/trash', function () {
+  return Excel::download(new CellarsTrashedExport, Carbon::now() . ' - Cellars-eliminados.xlsx');
+})->name('bodegas.exportar.trash');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/bodegas/exportar/todos', function () {
+  return Excel::download(new CellarsTodosExport, Carbon::now() . ' - Cellars-todos.xlsx');
+})->name('bodegas.exportar.todos');

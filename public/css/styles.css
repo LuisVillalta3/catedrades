@@ -67,3 +67,7 @@ select {
   font-weight: 700;
   text-transform: uppercase;
 }
+
+.relative {
+  display: inline-block;
+}
