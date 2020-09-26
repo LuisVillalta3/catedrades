@@ -2,16 +2,17 @@
 
 namespace App\Exports\Movements;
 
-use App\Movement;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use App\Models\Movement;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class TrashedExport implements FromCollection
+class TrashedExport implements FromView
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
-    {
-        return Movement::all();
-    }
+  public function view(): View
+  {
+    return view('exports.movements', [
+      'movements' => Movement::onlyTrashed()->get(),
+      'trashed'   => true
+    ]);
+  }
 }

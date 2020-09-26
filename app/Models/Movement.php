@@ -34,4 +34,9 @@ class Movement extends Model
   {
     return $this->belongsTo(Provider::class);
   }
+
+  public function getTipoAttribute()
+  {
+    return ($this->type == 1) ? 'Entrada' : 'Salida';
+  }
 }

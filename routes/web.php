@@ -189,4 +189,3 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/exportar/tras
 Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/exportar/todos', function () {
   return Excel::download(new MovementsTodosExport, Carbon::now() . ' - Movements-todos.xlsx');
 })->name('movimientos.exportar.todos');
-
