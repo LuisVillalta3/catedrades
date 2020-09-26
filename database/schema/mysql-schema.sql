@@ -63,6 +63,21 @@ CREATE TABLE `model_has_roles` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `movements` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `provider_id` bigint(20) unsigned DEFAULT NULL,
+  `cellar_id` bigint(20) unsigned DEFAULT NULL,
+  `product_id` bigint(20) unsigned DEFAULT NULL,
+  `qty` bigint(20) unsigned DEFAULT NULL,
+  `cost` decimal(50,2) DEFAULT '0.00',
+  `type` tinyint(4) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -215,3 +230,4 @@ INSERT INTO `migrations` VALUES (9,'2020_09_15_170436_add_soft_deletes_to_users'
 INSERT INTO `migrations` VALUES (10,'2020_09_15_191227_create_cellars_table',3);
 INSERT INTO `migrations` VALUES (11,'2020_09_15_193303_create_providers_table',4);
 INSERT INTO `migrations` VALUES (12,'2020_09_15_230237_create_products_table',5);
+INSERT INTO `migrations` VALUES (13,'2020_09_16_000852_create_movements_table',6);

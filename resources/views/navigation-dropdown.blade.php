@@ -35,6 +35,11 @@
                         Productos
                       </x-jet-nav-link>
                     @endcan
+                    @can('index_move')
+                      <x-jet-nav-link href="/movimientos" :active="request()->routeIs('movimientos')">
+                        Movimientos
+                      </x-jet-nav-link>
+                    @endcan
                 </div>
             </div>
 

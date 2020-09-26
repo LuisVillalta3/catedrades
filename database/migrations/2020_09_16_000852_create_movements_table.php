@@ -22,6 +22,7 @@ class CreateMovementsTable extends Migration
       $table->decimal('cost', 50, 2)->nullable()->default(0);
       $table->tinyInteger('type')->default(0);
       $table->timestamps();
+      $table->softDeletes();
     });
   }
 

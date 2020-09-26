@@ -74,3 +74,17 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/productos/nuevo', functio
 Route::middleware(['auth:sanctum', 'verified'])->get('/productos/editar/{id}', function ($id) {
   return view('app.products.form', compact('id'));
 })->name('productos.editar');
+
+/** */
+Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos', function () {
+  return view('app.movements.index');
+})->name('movimientos');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/nuevo', function ($id = null) {
+  return view('app.movements.form', compact('id'));
+})->name('movimientos.new');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/editar/{id}', function ($id) {
+  return view('app.movements.form', compact('id'));
+})->name('movimientos.editar');
+

@@ -19,4 +19,19 @@ class Movement extends Model
     'cost',
     'type'
   ];
+
+  public function product()
+  {
+    return $this->belongsTo(Product::class);
+  }
+
+  public function cellar()
+  {
+    return $this->belongsTo(Cellar::class);
+  }
+
+  public function provider()
+  {
+    return $this->belongsTo(Provider::class);
+  }
 }
