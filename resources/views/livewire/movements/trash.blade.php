@@ -6,19 +6,23 @@
           Movimientos
         </h2>
         <div>
-          @can('index_trash')
-            <a href="{{ route('movimientos.trash') }}"
+          @can('clear_trash')
+            <button wire:click='destroyAll'
               class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: red; border-color: red;">
-                Ver papelera
-            </a>
+                Limpiar todo
+            </button>
           @endcan
-          @can('new_move')
-            <a
-              class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: green; border-color: green;"
-              href="{{ route('movimientos.new') }}">
-              Nuevo
-            </a>
+          @can('recovery_trash')
+            <button wire:click='recoveryAll'
+              class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: green; border-color: green;">
+              Recuper todos
+            </button>
           @endcan
+          <a
+            class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: blue; border-color: blue;"
+            href="{{ route('movimientos') }}">
+            Ver movimientos
+          </a>
         </div>
       </div>
     </x-slot>
@@ -61,13 +65,19 @@
                       <td class="border px-4 py-2">${{ $item->cost }}</td>
                       <td class="border px-4 py-2">{{ $item->provider->name ?? 'N/A' }}</td>
                       <td class="border px-4 py-2">{{ $item->cellar->name ?? 'N/A' }}</td>
-                      @can('destroy_move')
-                        <td class="border px-4 py-2 inline-flex justify-between">
+                      <td class="border px-4 py-2 inline-flex justify-between">
+                        @can('recovery_trash')
+                          <button wire:click='recovery({{ $item->id }})'
+                            class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: green; border-color: green;">
+                            Recuperar
+                          </button>
+                        @endcan
+                        @can('destroy_trash')
                           <button wire:click="destroy({{ $item->id }})" class="bg-transparent hover:bg-blue-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: red; border-color: red;">
                             Eliminar
                           </button>
-                        </td>
-                      @endcan
+                        @endcan
+                      </td>
                     </tr>
                   @endforeach
                 </tbody>

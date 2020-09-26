@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Movements;
 
 use App\Models\Movement;
-use App\Models\Product;
 use Livewire\Component;
 
 class Index extends Component
