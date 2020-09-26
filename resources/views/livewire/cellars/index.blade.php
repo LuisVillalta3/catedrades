@@ -6,26 +6,28 @@
           Bodegas
         </h2>
         <div>
-          <x-jet-dropdown>
-            <x-slot name="trigger">
-              <button
-                  class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: blue; border-color: blue;">
-                    Descargar reporte
-              </button>
-            </x-slot>
+          @can('index_report')
+            <x-jet-dropdown>
+              <x-slot name="trigger">
+                <button
+                    class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: blue; border-color: blue;">
+                      Descargar reporte
+                </button>
+              </x-slot>
 
-            <x-slot name="content">
-              <x-jet-dropdown-link href="{{ route('bodegas.exportar') }}">
-                bodegas
-              </x-jet-dropdown-link>
-              <x-jet-dropdown-link href="{{ route('bodegas.exportar.todos') }}">
-                bodegas /c papelera
-              </x-jet-dropdown-link>
-              <x-jet-dropdown-link href="{{ route('bodegas.exportar.trash') }}">
-                bodegas eliminados
-              </x-jet-dropdown-link>
-            </x-slot>
-          </x-jet-dropdown>
+              <x-slot name="content">
+                <x-jet-dropdown-link href="{{ route('bodegas.exportar') }}">
+                  bodegas
+                </x-jet-dropdown-link>
+                <x-jet-dropdown-link href="{{ route('bodegas.exportar.todos') }}">
+                  bodegas /c papelera
+                </x-jet-dropdown-link>
+                <x-jet-dropdown-link href="{{ route('bodegas.exportar.trash') }}">
+                  bodegas eliminados
+                </x-jet-dropdown-link>
+              </x-slot>
+            </x-jet-dropdown>
+          @endcan
           @can('index_trash')
             <a href="{{ route('bodegas.trash') }}"
               class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: red; border-color: red;">
