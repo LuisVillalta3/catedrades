@@ -3,6 +3,9 @@
 use App\Exports\Cellars\CellarsExport;
 use App\Exports\Cellars\TodosExport as CellarsTodosExport;
 use App\Exports\Cellars\TrashedExport as CellarsTrashedExport;
+use App\Exports\Providers\ProvidersExport;
+use App\Exports\Providers\TodosExport as ProvidersTodosExport;
+use App\Exports\Providers\TrashedExport as ProvidersTrashedExport;
 use App\Exports\Users\TodosExport;
 use App\Exports\Users\TrashedExport;
 use App\Exports\Users\UsersExport;
@@ -141,3 +144,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/bodegas/exportar/trash', 
 Route::middleware(['auth:sanctum', 'verified'])->get('/bodegas/exportar/todos', function () {
   return Excel::download(new CellarsTodosExport, Carbon::now() . ' - Cellars-todos.xlsx');
 })->name('bodegas.exportar.todos');
+
+/** */
+Route::middleware(['auth:sanctum', 'verified'])->get('/proveedores/exportar', function () {
+  return Excel::download(new ProvidersExport, Carbon::now() . ' - Providers.xlsx');
+})->name('proveedores.exportar');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/proveedores/exportar/trash', function () {
+  return Excel::download(new ProvidersTrashedExport, Carbon::now() . ' - Providers-eliminados.xlsx');
+})->name('proveedores.exportar.trash');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/proveedores/exportar/todos', function () {
+  return Excel::download(new ProvidersTodosExport, Carbon::now() . ' - Providers-todos.xlsx');
+})->name('proveedores.exportar.todos');
