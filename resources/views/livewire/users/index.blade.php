@@ -5,13 +5,21 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
           Usuarios
         </h2>
-        @can('new_user')
-          <a
-            class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: green; border-color: green;"
-            href="{{ route('usuarios.new') }}">
-            Nuevo
-          </a>
-        @endcan
+        <div>
+          @can('index_trash')
+            <a href="{{ route('usuarios.trash') }}"
+              class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: red; border-color: red;">
+                Ver papelera
+            </a>
+          @endcan
+          @can('new_user')
+            <a
+              class="bg-transparent hover:bg-blue-500 mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: green; border-color: green;"
+              href="{{ route('usuarios.new') }}">
+              Nuevo
+            </a>
+          @endcan
+        </div>
       </div>
     </x-slot>
 

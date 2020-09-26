@@ -32,6 +32,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/usuarios/nuevo', function
   return view('app.users.form', compact('id'));
 })->name('usuarios.new');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/usuarios/eliminados', function () {
+  return view('app.users.trash');
+})->name('usuarios.trash');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/usuarios/editar/{id}', function ($id) {
   return view('app.users.form', compact('id'));
 })->name('usuarios.editar');
