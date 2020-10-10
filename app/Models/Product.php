@@ -17,4 +17,9 @@ class Product extends Model
     'description',
     'price'
   ];
+
+  public function movements()
+  {
+    return $this->hasMany(Movement::class);
+  }
 }
