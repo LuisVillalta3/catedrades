@@ -15,6 +15,8 @@ class Form extends Component
   public $cellars;
   public $products;
   public $minavailble;
+  public $cellar_message;
+  public $provider_message;
 
   public function mount($id = null)
   {
@@ -65,6 +67,8 @@ class Form extends Component
   public function render()
   {
     $this->minavailble = false;
+    $this->cellar_message = ($this->movement->type) ? 'Bodega de origen' : 'Bodega de destino';
+    $this->provider_message = ($this->movement->type) ? 'Proveedor de origen' : 'Proveedor de destino';
     return view('livewire.movements.form');
   }
 }
