@@ -44,7 +44,7 @@ class Form extends Component
       $product->stock += $this->movement->qty;
       $product->save();
 
-      return redirect()->route('movimientos');
+      return redirect()->route('movimientos.preview', $this->movement->id);
     }
 
     if ($this->movement->type == 0 && ($product->stock >= $this->movement->qty)) {
@@ -52,7 +52,7 @@ class Form extends Component
       $product->stock -= $this->movement->qty;
       $product->save();
 
-      return redirect()->route('movimientos');
+      return redirect()->route('movimientos.preview', $this->movement->id);
     }
     $this->movement->qty = 0;
     $this->validate();

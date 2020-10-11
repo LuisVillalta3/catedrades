@@ -15,6 +15,7 @@ use App\Exports\Providers\TrashedExport as ProvidersTrashedExport;
 use App\Exports\Users\TodosExport;
 use App\Exports\Users\TrashedExport;
 use App\Exports\Users\UsersExport;
+use App\Http\Controllers\PdfsContronller;
 use App\Models\Product;
 use App\Models\Provider;
 use App\Models\Cellar;
@@ -116,9 +117,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/nuevo', funct
   return view('app.movements.form', compact('id'));
 })->name('movimientos.new');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/editar/{id}', function ($id) {
-  return view('app.movements.form', compact('id'));
-})->name('movimientos.editar');
+Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/comprobante/{id}', function ($id) {
+  return view('app.movements.preview', compact('id'));
+})->name('movimientos.preview');
+
+Route::get(
+  '/movimientos/comprobante/{id}/descargar',
+  [PdfsContronller::class, 'movement']
+)->name('movimientos.download');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/bodegas/eliminados', function () {
   return view('app.cellars.trash');
@@ -204,5 +210,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/exportar/todo
 // Route::get('prueba', function () {
 //   $location = public_path('storage/pdfs/item.pdf');
 //   Browsershot::url('https://github.com/spatie/browsershot')->savePdf($location);
-//   return response()->download($location);
+//   $l = storage_path('pdfs/item.pdf');
+//   return redirect($l);
+//   response()->download($location);
 // });
