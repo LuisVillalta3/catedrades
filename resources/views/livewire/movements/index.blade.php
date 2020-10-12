@@ -85,6 +85,12 @@
                       <td class="border px-4 py-2">{{ $item->cellar->name ?? 'N/A' }}</td>
                       @can('destroy_move')
                         <td class="border px-4 py-2 inline-flex justify-between">
+                          <a
+                            href="{{ route('movimientos.download', $item->id) }}"
+                            class="bg-transparent hover:bg-blue-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                            style="color: #252f3f; border-color: #252f3f;">
+                            Reporte
+                          </a>
                           <button wire:click="destroy({{ $item->id }})" class="bg-transparent hover:bg-blue-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: red; border-color: red;">
                             Eliminar
                           </button>

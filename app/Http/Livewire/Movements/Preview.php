@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Movements;
 
 use App\Models\Movement;
 use Livewire\Component;
-use Spatie\Browsershot\Browsershot;
 
 class Preview extends Component
 {
@@ -15,14 +14,9 @@ class Preview extends Component
     $this->movement = Movement::firstOrNew(['id' => $id]);
   }
 
-  public function downloadMovement()
+  public function redirectToMovements()
   {
-    $uri = route('movimientos.download', $this->movement->id);
-    dd(file_get_contents($uri));
-    $name = $this->movement->created_at->timestamp . '-movement-'. $this->movement->id;
-    $location = public_path('storage/pdfs/' . $name);
-    // Browsershot::url($uri)->savePdf($location);
-    return response()->download($location);
+    return redirect()->route('movimientos');
   }
 
   public function render()

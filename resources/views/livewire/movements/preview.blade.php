@@ -40,12 +40,13 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;{{ $movement->provider->email }} - {{ $movement->provider->phone }} - {{ $movement->provider->ubication }}
               </h3>
               <div class="flex items-center justify-end mt-4">
-                <x-jet-button class="ml-4">
+                <x-jet-button wire:click="redirectToMovements" class="ml-4">
                   Ver movimientos
                 </x-jet-button>
-                <x-jet-button wire:click='downloadMovement' class="ml-4">
+                <a href="{{ route('movimientos.download', $movement->id) }}"
+                  style="color: white; background: #252f3f; padding: .75em 2em; border-radius: 5px; margin: 0 .5em; text-transform: uppercase; font-weight: 600; font-size: 12px;">
                   Descargar
-                </x-jet-button>
+                </a>
             </div>
             </div>
         </div>

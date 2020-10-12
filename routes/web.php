@@ -121,10 +121,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/comprobante/{
   return view('app.movements.preview', compact('id'));
 })->name('movimientos.preview');
 
-Route::get(
-  '/movimientos/comprobante/{id}/descargar',
-  [PdfsContronller::class, 'movement']
-)->name('movimientos.download');
+Route::get('/movimientos/comprobante/{id}/descargar', [PdfsContronller::class, 'movement'])->name('movimientos.download');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/bodegas/eliminados', function () {
   return view('app.cellars.trash');
