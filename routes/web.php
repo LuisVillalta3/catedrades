@@ -204,11 +204,3 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/exportar/tras
 Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/exportar/todos', function () {
   return Excel::download(new MovementsTodosExport, Carbon::now() . ' - Movements-todos.xlsx');
 })->name('movimientos.exportar.todos');
-
-// Route::get('prueba', function () {
-//   $location = public_path('storage/pdfs/item.pdf');
-//   Browsershot::url('https://github.com/spatie/browsershot')->savePdf($location);
-//   $l = storage_path('pdfs/item.pdf');
-//   return redirect($l);
-//   response()->download($location);
-// });
