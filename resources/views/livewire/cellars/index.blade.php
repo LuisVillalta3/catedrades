@@ -7,7 +7,7 @@
         </h2>
         <div>
           @can('index_report')
-            <x-jet-dropdown>
+            {{-- <x-jet-dropdown>
               <x-slot name="trigger">
                 <button
                     class="bg-transparent  mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: blue; border-color: blue;">
@@ -26,7 +26,7 @@
                   bodegas eliminados
                 </x-jet-dropdown-link>
               </x-slot>
-            </x-jet-dropdown>
+            </x-jet-dropdown> --}}
           @endcan
           @can('index_trash')
             <a href="{{ route('bodegas.trash') }}"

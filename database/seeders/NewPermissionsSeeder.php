@@ -21,7 +21,7 @@ class NewPermissionsSeeder extends Seeder
     Permission::create(['name' => 'destroy_trash']);
     Permission::create(['name' => 'clear_trash']);
 
-    $role = Role::find(2);
+    $role = Role::find(1);
     $role->givePermissionTo('index_trash');
     $role->givePermissionTo('recovery_trash');
     $role->givePermissionTo('destroy_trash');
