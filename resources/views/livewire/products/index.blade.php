@@ -60,10 +60,10 @@
                       <td class="border px-4 py-2">${{ $item->price }}</td>
                       <td class="border px-4 py-2 inline-flex justify-between">
                         @can('index_report')
-                          <button
+                          <a href="#report-movements" rel="modal:open" data-product="{{ $item->id }}"
                             class="bg-transparent  mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: #252f3f; border-color: #252f3f;">
-                              Reportes
-                          </button>
+                            Reportes
+                          </a>
                         @endcan
                         @can('edit_product')
                           <a
@@ -89,4 +89,5 @@
   </x-app-layout>
 
   @include('layouts.export_modal')
+  @include('layouts.export_movements')
 </div>

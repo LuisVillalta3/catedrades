@@ -7,7 +7,7 @@
         </h2>
         <div>
           @can('index_report')
-            <a href="#report" rel="modal:open"
+            <a href="#report-movements" rel="modal:open" data-product="{{ null }}"
               class="bg-transparent  mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: blue; border-color: blue;">
                 Descargar reporte
             </a>
@@ -90,5 +90,5 @@
     </div>
   </x-app-layout>
 
-  @include('layouts.export_modal')
+  @include('layouts.export_movements')
 </div>

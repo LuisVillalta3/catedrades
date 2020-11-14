@@ -57,3 +57,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/comprobante/{
 Route::get('/movimientos/comprobante/{id}/descargar', [InitController::class, 'movement'])->name('movimientos.download');
 
 Route::post('/exportar', [ExportsController::class, 'export'])->name('exportar.datos');
+Route::post('/exportar/movimientos', [ExportsController::class, 'exportMovements'])->name('exportar.movimientos.datos');

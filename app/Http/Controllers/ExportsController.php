@@ -32,7 +32,12 @@ class ExportsController extends Controller
     return $pdf->download(Carbon::now() . ' - ' . $name . '.' . $ext);
   }
 
-  public function elements($model, $cont)
+  public function exportMovements(Request $request)
+  {
+    
+  }
+
+  private function elements($model, $cont)
   {
     if ($cont == 'all') { return $model::select($model::$selection)->withTrashed()->get(); }
     if ($cont == 'normal') { return $model::select($model::$selection)->get(); }
