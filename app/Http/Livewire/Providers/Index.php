@@ -20,7 +20,8 @@ class Index extends Component
                 ->where('email', 'like', "%{$this->email}%")
                 ->where('phone', 'like', "%{$this->phone}%")
                 ->where('fax', 'like', "%{$this->fax}%")
-                ->paginate(10)
+                ->paginate(10),
+      'model'    => Provider::class
     ]);
   }
 

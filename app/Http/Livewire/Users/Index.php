@@ -13,7 +13,8 @@ class Index extends Component
   public function render()
   {
     return view('livewire.users.index', [
-      'elements' => User::where('name', 'like', "%{$this->name}%")->where('email', 'like', "%{$this->email}%")->paginate(10)
+      'elements' => User::where('name', 'like', "%{$this->name}%")->where('email', 'like', "%{$this->email}%")->paginate(10),
+      'model'    => User::class
     ]);
   }
 

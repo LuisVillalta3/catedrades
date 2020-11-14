@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExportsController;
 use App\Http\Controllers\InitController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -54,3 +55,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/movimientos/comprobante/{
 })->name('movimientos.preview');
 
 Route::get('/movimientos/comprobante/{id}/descargar', [InitController::class, 'movement'])->name('movimientos.download');
+
+Route::post('/exportar', [ExportsController::class, 'export'])->name('exportar.datos');

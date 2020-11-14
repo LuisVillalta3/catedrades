@@ -12,7 +12,8 @@ class Index extends Component
   public function render()
   {
     return view('livewire.cellars.index', [
-      'elements' => Cellar::where('name', 'like', "%{$this->name}%")->paginate(10)
+      'elements' => Cellar::where('name', 'like', "%{$this->name}%")->paginate(10),
+      'model'    => Cellar::class
     ]);
   }
 

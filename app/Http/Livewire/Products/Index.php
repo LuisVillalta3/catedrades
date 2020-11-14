@@ -12,7 +12,8 @@ class Index extends Component
   public function render()
   {
     return view('livewire.products.index', [
-      'elements' => Product::where('name', 'like', "%{$this->name}%")->paginate(10)
+      'elements' => Product::where('name', 'like', "%{$this->name}%")->paginate(10),
+      'model'    => Product::class
     ]);
   }
 

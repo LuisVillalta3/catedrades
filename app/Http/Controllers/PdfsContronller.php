@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 
 class PdfsContronller extends Controller
 {
-
-
   public function movementsByProduct($id)
   {
     $product = Product::find($id);

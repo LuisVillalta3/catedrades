@@ -15,4 +15,16 @@ class Cellar extends Model
     'name',
     'ubication'
   ];
+
+  public static $headers = [
+    '#',
+    'Nombre',
+    'Ubicación',
+    'Fecha de registro',
+    'Fecha de eliminación'
+  ];
+
+  public static $selection = [
+    'id', 'name', 'ubication', 'created_at', 'deleted_at'
+  ];
 }

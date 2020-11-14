@@ -64,4 +64,16 @@ class User extends Authenticatable
   protected $appends = [
     'profile_photo_url',
   ];
+
+  public static $headers = [
+    '#',
+    'Nombre',
+    'Correo electrónico',
+    'Fecha de registro',
+    'Fecha de eliminación'
+  ];
+
+  public static $selection = [
+    'id', 'name', 'email', 'created_at', 'deleted_at'
+  ];
 }

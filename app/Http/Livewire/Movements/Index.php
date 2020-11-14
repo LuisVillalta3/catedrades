@@ -12,7 +12,8 @@ class Index extends Component
   public function render()
   {
     return view('livewire.movements.index', [
-      'elements' => Movement::paginate(10)
+      'elements' => Movement::paginate(10),
+      'model'    => Movement::class
     ]);
   }
 

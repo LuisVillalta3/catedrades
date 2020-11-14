@@ -18,6 +18,20 @@ class Product extends Model
     'price'
   ];
 
+  public static $headers = [
+    '#',
+    'Nombre',
+    'Descripción',
+    'Precio',
+    'Stock',
+    'Fecha de registro',
+    'Fecha de eliminación'
+  ];
+
+  public static $selection = [
+    'id', 'name', 'description', 'price', 'stock', 'created_at', 'deleted_at'
+  ];
+
   public function movements()
   {
     return $this->hasMany(Movement::class);

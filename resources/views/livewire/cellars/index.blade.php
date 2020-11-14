@@ -7,26 +7,10 @@
         </h2>
         <div>
           @can('index_report')
-            {{-- <x-jet-dropdown>
-              <x-slot name="trigger">
-                <button
-                    class="bg-transparent  mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: blue; border-color: blue;">
-                      Descargar reporte
-                </button>
-              </x-slot>
-
-              <x-slot name="content">
-                <x-jet-dropdown-link href="{{ route('bodegas.exportar') }}">
-                  bodegas
-                </x-jet-dropdown-link>
-                <x-jet-dropdown-link href="{{ route('bodegas.exportar.todos') }}">
-                  bodegas /c papelera
-                </x-jet-dropdown-link>
-                <x-jet-dropdown-link href="{{ route('bodegas.exportar.trash') }}">
-                  bodegas eliminados
-                </x-jet-dropdown-link>
-              </x-slot>
-            </x-jet-dropdown> --}}
+            <a href="#report" rel="modal:open"
+              class="bg-transparent  mr-5 text-red-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="color: blue; border-color: blue;">
+                Descargar reporte
+            </a>
           @endcan
           @can('index_trash')
             <a href="{{ route('bodegas.trash') }}"
@@ -91,4 +75,6 @@
         </div>
     </div>
   </x-app-layout>
+
+  @include('layouts.export_modal')
 </div>
