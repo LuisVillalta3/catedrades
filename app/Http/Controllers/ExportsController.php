@@ -18,7 +18,5 @@ class ExportsController extends Controller
 
     if ($ext != 'pdf')
       return Excel::download(new Exports($model, $cont), Carbon::now() . ' - ' . $name . '.' . $ext);
-
-
   }
 }
