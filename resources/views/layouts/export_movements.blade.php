@@ -20,6 +20,14 @@
       <x-jet-input class="block mt-1 w-full" name="name" id="name" type="text" placeholder="Movimientos" />
     </div>
     <div class="control mt-4">
+      <label class="font-semibold text-l text-gray-800 leading-tight" for="filter">Filtrar por</label>
+      <select id="filter" name="filter">
+        <option value="all">Entradas / Salidas</option>
+        <option value="1">Entradas</option>
+        <option value="0">Salidas</option>
+      </select>
+    </div>
+    <div class="control mt-4">
       <label class="font-semibold text-l text-gray-800 leading-tight" for="content">Contenido</label>
       <select id="content" name="content">
         <option value="all">Todos</option>

@@ -1,3 +1,4 @@
+
 <table>
   <thead>
     <tr>
@@ -8,13 +9,11 @@
       <th>Costo</th>
       <th>Proveedor</th>
       <th>Bodega</th>
-      @if ($trashed)
-        <th>Fecha de eliminación</th>
-      @endif
+      <th>Fecha de eliminación</th>
     </tr>
   </thead>
   <tbody>
-    @foreach($movements as $movement)
+    @foreach($elements as $movement)
       <tr>
         <td>{{ $movement->created_at }}</td>
         <td>{{ $movement->type == 1 ? 'Entrada' : 'Salida' }}</td>
@@ -23,9 +22,7 @@
         <td>{{ $movement->cost }}</td>
         <td>{{ $movement->provider->name ?? 'N/A' }}</td>
         <td>{{ $movement->cellar->name ?? 'N/A' }}</td>
-        @if ($trashed)
-          <td>{{ $movement->deleted_at }}</td>
-        @endif
+        <td>{{ $movement->deleted_at }}</td>
       </tr>
     @endforeach
   </tbody>
